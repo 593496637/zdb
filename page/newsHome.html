@@ -11,8 +11,18 @@
 		<!--标准mui.css-->
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<!--App自定义的css-->
-		<link rel="stylesheet" type="text/css" href="../css/app.css" />
 		<style type="text/css">
+			html{
+				background:url(../img/bj/bj.jpg) no-repeat;
+				background-size: contain;
+				background-attachment: fixed;
+			}
+			body{
+				background: transparent !important;
+			}
+			.mui-content{
+				background: transparent;
+			}
 			table{
 				border: none;
 				width: 100%;
@@ -37,11 +47,26 @@
 			.mui-card-content:active{
 				background: #ddd;
 			}
+			.news{
+				padding-top: 30px;
+				text-align: center;
+				font-size: 20px;
+				font-family: "微软雅黑";
+				font-weight: 700;
+			}
+			.mui-card{
+				background: none;
+				background: rgba(255,255,255,.5);
+				margin-top: 30px;
+			}
 		</style>
 	</head>
 
 	<body>
 		<div class="mui-content">
+			<div class="news">
+				要闻
+			</div>
 			<div class="mui-card">
 				<div class="mui-card-content">
 					<div class="mui-card-content-inner">

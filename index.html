@@ -47,12 +47,15 @@
 			._navigation .mui-table-view-cell>a:not(.mui-btn) {
 				white-space: normal;
 				text-overflow: initial;
+				padding: 0 !important;
 			}
 			
 			._navigation .mui-table-view-cell>a:not(.mui-btn) img {
 				width: 100%;
 			}
-			
+			._navigation .mui-table-view-cell{
+				padding: 0 !important;
+			}			
 			.mui-grid-view.mui-grid-9 .mui-media {
 				color: #555;
 			}
@@ -141,15 +144,27 @@
 					</a>
 				</li>
 				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-					<a href="http://www.bjzdb.gov.cn/gdjt/">
+					<a href="page/gdjt.html">
 						<i class="iconfont">&#xe636;</i>
 						<div class="mui-media-body">轨道交通</div>
 					</a>
 				</li>
 				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-					<a href="http://www.bjzdb.gov.cn/phqgz/">
+					<a href="page/phqgz.html">
 						<i class="iconfont">&#xe6b5;</i>
 						<div class="mui-media-body">棚户区改造</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="page/zdxmjs.html">
+						<i class="iconfont">&#xe660;</i>
+						<div class="mui-media-body">轨道交通建设项目</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="page/qtzdxmjs.html">
+						<i class="iconfont">&#xe60f;</i>
+						<div class="mui-media-body">其他重大项目建设</div>
 					</a>
 				</li>
 				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -176,28 +191,6 @@
 						<div class="mui-media-body">通知公告</div>
 					</a>
 				</li>
-			</ul>
-			<ul class="mui-table-view">
-				<li class="mui-table-view-cell _title"><i class="iconfont _navigationBar">&#xe675;</i> 重大项目介绍</li>
-			</ul>
-			<ul class="mui-table-view mui-grid-view mui-grid-9">
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-					<a href="page/zdxmjs.html">
-						<i class="iconfont">&#xe660;</i>
-						<div class="mui-media-body">轨道交通建设项目</div>
-					</a>
-				</li>
-				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-					<a href="http://www.bjzdb.gov.cn/zdxmjs/qtxm/">
-						<i class="iconfont">&#xe60f;</i>
-						<div class="mui-media-body">其他重大项目建设</div>
-					</a>
-				</li>
-			</ul>
-			<ul class="mui-table-view">
-				<li class="mui-table-view-cell _title"><i class="iconfont _navigationBar">&#xe675;</i> 党工信息</li>
-			</ul>
-			<ul class="mui-table-view mui-grid-view mui-grid-9">
 				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 					<a href="http://www.bjzdb.gov.cn/dgxx/dwgz/">
 						<i class="iconfont">&#xe611;</i>
@@ -210,11 +203,6 @@
 						<div class="mui-media-body">工会工作</div>
 					</a>
 				</li>
-			</ul>
-			<ul class="mui-table-view">
-				<li class="mui-table-view-cell _title _navigationBar"><i class="iconfont _navigationBar">&#xe666;</i> 领导介绍及联系方式</li>
-			</ul>
-			<ul class="mui-table-view mui-grid-view mui-grid-9">
 				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 					<a href="page/jgjs.html">
 						<i class="iconfont">&#xe791;</i>
@@ -252,36 +240,111 @@
 					</a>
 				</li>
 			</ul>
+			<!--<ul class="mui-table-view">
+				<li class="mui-table-view-cell _title"><i class="iconfont _navigationBar">&#xe675;</i> 重大项目介绍</li>
+			</ul>
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="page/zdxmjs.html">
+						<i class="iconfont">&#xe660;</i>
+						<div class="mui-media-body">轨道交通建设项目</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="page/qtzdxmjs.html">
+						<i class="iconfont">&#xe60f;</i>
+						<div class="mui-media-body">其他重大项目建设</div>
+					</a>
+				</li>
+			</ul>-->
+			<!--<ul class="mui-table-view">
+				<li class="mui-table-view-cell _title"><i class="iconfont _navigationBar">&#xe675;</i> 党工信息</li>
+			</ul>
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="http://www.bjzdb.gov.cn/dgxx/dwgz/">
+						<i class="iconfont">&#xe611;</i>
+						<div class="mui-media-body">党委工作</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="http://www.bjzdb.gov.cn/dgxx/ghgz/">
+						<i class="iconfont">&#xe615;</i>
+						<div class="mui-media-body">工会工作</div>
+					</a>
+				</li>
+			</ul>-->
+			<!--<ul class="mui-table-view">
+				<li class="mui-table-view-cell _title _navigationBar"><i class="iconfont _navigationBar">&#xe666;</i> 领导介绍及联系方式</li>
+			</ul>-->
+			<!--<ul class="mui-table-view mui-grid-view mui-grid-9">
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="page/jgjs.html">
+						<i class="iconfont">&#xe791;</i>
+						<div class="mui-media-body">机构介绍</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="page/zyzz.html">
+						<i class="iconfont">&#xe61e;</i>
+						<div class="mui-media-body">主要职责</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="page/nsjg.html">
+						<i class="iconfont">&#xe60b;</i>
+						<div class="mui-media-body">内设机构</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="page/ldjs.html">
+						<i class="iconfont">&#xe662;</i>
+						<div class="mui-media-body">领导介绍</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="page/lxfs.html">
+						<i class="iconfont">&#xe6ef;</i>
+						<div class="mui-media-body">联系方式</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+					<a href="page/jdts.html">
+						<i class="iconfont">&#xe626;</i>
+						<div class="mui-media-body">监督投诉</div>
+					</a>
+				</li>
+			</ul>-->
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell _title _navigationBar"><i class="iconfont _navigationBar">&#xe6d3;</i> 友情链接</li>
 			</ul>
 			<ul class="mui-table-view mui-grid-view mui-grid-9 _navigation">
-				<li class="mui-table-view-cell mui-col-xs-6 mui-col-sm-12">
+				<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
 					<a href="http://www.beijing.gov.cn/">
 						<img src="img/navigation/gwymh.gif" />
 					</a>
 				</li>
-				<li class="mui-table-view-cell mui-col-xs-6 mui-col-sm-12">
+				<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
 					<a href="http://www.bjgongzhao.com.cn/">
 						<img src="img/navigation/bjgzw.jpg" />
 					</a>
 				</li>
-				<li class="mui-table-view-cell mui-col-xs-6 mui-col-sm-12">
+				<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
 					<a href="http://www.bjjtgl.gov.cn/">
 						<img src="img/navigation/bjsgaj.gif" />
 					</a>
 				</li>
-				<li class="mui-table-view-cell mui-col-xs-6 mui-col-sm-12">
+				<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
 					<a href="http://www.bii.com.cn/">
 						<img src="img/navigation/jcss.gif" />
 					</a>
 				</li>
-				<li class="mui-table-view-cell mui-col-xs-6 mui-col-sm-12">
+				<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
 					<a href="http://www.bjsubway.com/">
 						<img src="img/navigation/bjdt.gif" />
 					</a>
 				</li>
-				<li class="mui-table-view-cell mui-col-xs-6 mui-col-sm-12">
+				<li class="mui-table-view-cell mui-col-xs-4 mui-col-sm-4">
 					<a href="http://www.bjzdb.gov.cn/">
 						<img src="img/navigation/sdcs.gif" />
 					</a>
