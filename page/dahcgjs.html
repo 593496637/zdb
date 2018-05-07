@@ -1,376 +1,448 @@
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<title>冬奥会场馆</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<!--标准mui.css-->
-		<link rel="stylesheet" href="../css/mui.min.css">
-		<!--App自定义的css-->
-		<style type="text/css">
-			html{
-				background: url(../img/bj/1357f1eed180efd4.jpg);
-				background-attachment: fixed;
-				background-size: contain;
-			}
-			body{
-				background: transparent !important;
-			}
-			.mui-content{
-				background: transparent;
-			}
-			.mui-preview-image.mui-fullscreen {
-				position: fixed;
-				z-index: 20;
-				background-color: #000;
-			}
-			.mui-preview-header,
-			.mui-preview-footer {
-				position: absolute;
-				width: 100%;
-				left: 0;
-				z-index: 10;
-			}
-			.mui-preview-header {
-				height: 44px;
-				top: 0;
-			}
-			.mui-preview-footer {
-				height: 50px;
-				bottom: 0px;
-			}
-			.mui-preview-header .mui-preview-indicator {
-				display: block;
-				line-height: 25px;
-				color: #fff;
-				text-align: center;
-				margin: 15px auto 4;
-				width: 70px;
-				background-color: rgba(0, 0, 0, 0.4);
-				border-radius: 12px;
-				font-size: 16px;
-			}
-			.mui-preview-image {
-				display: none;
-				-webkit-animation-duration: 0.5s;
-				animation-duration: 0.5s;
-				-webkit-animation-fill-mode: both;
-				animation-fill-mode: both;
-			}
-			.mui-preview-image.mui-preview-in {
-				-webkit-animation-name: fadeIn;
-				animation-name: fadeIn;
-			}
-			.mui-preview-image.mui-preview-out {
-				background: none;
-				-webkit-animation-name: fadeOut;
-				animation-name: fadeOut;
-			}
-			.mui-preview-image.mui-preview-out .mui-preview-header,
-			.mui-preview-image.mui-preview-out .mui-preview-footer {
-				display: none;
-			}
-			.mui-zoom-scroller {
-				position: absolute;
-				display: -webkit-box;
-				display: -webkit-flex;
-				display: flex;
-				-webkit-box-align: center;
-				-webkit-align-items: center;
-				align-items: center;
-				-webkit-box-pack: center;
-				-webkit-justify-content: center;
-				justify-content: center;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				top: 0;
-				width: 100%;
-				height: 100%;
-				margin: 0;
-				-webkit-backface-visibility: hidden;
-			}
-			.mui-zoom {
-				-webkit-transform-style: preserve-3d;
-				transform-style: preserve-3d;
-			}
-			.mui-slider .mui-slider-group .mui-slider-item img {
-				width: auto;
-				height: auto;
-				max-width: 100%;
-				max-height: 100%;
-			}
-			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
-				width: 100%;
-			}
-			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
-				display: inline-table;
-			}
-			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
-				display: table-cell;
-				vertical-align: middle;
-			}
-			.mui-preview-loading {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
-				display: none;
-			}
-			.mui-preview-loading.mui-active {
-				display: block;
-			}
-			.mui-preview-loading .mui-spinner-white {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				margin-left: -25px;
-				margin-top: -25px;
-				height: 50px;
-				width: 50px;
-			}
-			.mui-preview-image img.mui-transitioning {
-				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
-				transition: transform 0.5s ease, opacity 0.5s ease;
-			}
-			@-webkit-keyframes fadeIn {
-				0% {
-					opacity: 0;
-				}
-				100% {
-					opacity: 1;
-				}
-			}
-			@keyframes fadeIn {
-				0% {
-					opacity: 0;
-				}
-				100% {
-					opacity: 1;
-				}
-			}
-			@-webkit-keyframes fadeOut {
-				0% {
-					opacity: 1;
-				}
-				100% {
-					opacity: 0;
-				}
-			}
-			@keyframes fadeOut {
-				0% {
-					opacity: 1;
-				}
-				100% {
-					opacity: 0;
-				}
-			}
-			p img {
-				max-width: 100%;
-				height: auto;
-			}
-			.mui-content-padded{
-				background: #fff;
-				padding:15px;
-				margin-bottom: 5px;
-				background: rgba(255,255,255,1);
-				/*border-radius: 5px;*/
-			}
-			body{
-				font-family: "微软雅黑";
-			}
-			.right{
-				text-align: right;
-				font-size: 13px;
-			}
-			a{
-				text-decoration: none;
-				color: #111;
-			}
-			.mui-media-body{
-				line-height: 42px;
-				font-size: 18px;
-				font-weight: 900;
-			}
-			.mui-table-view{
-				padding:0 5px;
-				background: transparent !important;
-			}
-			.mui-table-view:before{
-				background: none;
-			}
-			.mui-table-view:after{
-				background: none;
-			}
-			.mui-table-view-cell{
-				/*background: linear-gradient(#e36368,#d34249);*/
-				background: rgba(255,255,255,1);
-				border-top-left-radius: 30px;
-				border-bottom-right-radius: 30px;
-			}
-			img{
-				width: 100%;
-			}
-			.mui-content-padded{
-				margin: 5px;
-			}
-		</style>
-	</head>
+<head>
+	<meta charset="utf-8">
+	<title>冬奥会场馆</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--标准mui.css-->
+	<link rel="stylesheet" href="../css/mui.min.css">
+	<!--App自定义的css-->
+	<style type="text/css">
+		html {
+			background: url(../img/bj/1357f1eed180efd4.jpg);
+			background-attachment: fixed;
+			background-size: contain;
+		}
 
-	<body>
-		<!--<header class="mui-bar mui-bar-nav">
+		body {
+			background: transparent !important;
+		}
+
+		.mui-content {
+			background: transparent;
+		}
+
+		.mui-preview-image.mui-fullscreen {
+			position: fixed;
+			z-index: 20;
+			background-color: #000;
+		}
+
+		.mui-preview-header,
+		.mui-preview-footer {
+			position: absolute;
+			width: 100%;
+			left: 0;
+			z-index: 10;
+		}
+
+		.mui-preview-header {
+			height: 44px;
+			top: 0;
+		}
+
+		.mui-preview-footer {
+			height: 50px;
+			bottom: 0px;
+		}
+
+		.mui-preview-header .mui-preview-indicator {
+			display: block;
+			line-height: 25px;
+			color: #fff;
+			text-align: center;
+			margin: 15px auto 4;
+			width: 70px;
+			background-color: rgba(0, 0, 0, 0.4);
+			border-radius: 12px;
+			font-size: 16px;
+		}
+
+		.mui-preview-image {
+			display: none;
+			-webkit-animation-duration: 0.5s;
+			animation-duration: 0.5s;
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+		}
+
+		.mui-preview-image.mui-preview-in {
+			-webkit-animation-name: fadeIn;
+			animation-name: fadeIn;
+		}
+
+		.mui-preview-image.mui-preview-out {
+			background: none;
+			-webkit-animation-name: fadeOut;
+			animation-name: fadeOut;
+		}
+
+		.mui-preview-image.mui-preview-out .mui-preview-header,
+		.mui-preview-image.mui-preview-out .mui-preview-footer {
+			display: none;
+		}
+
+		.mui-zoom-scroller {
+			position: absolute;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-box-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			-webkit-backface-visibility: hidden;
+		}
+
+		.mui-zoom {
+			-webkit-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+		}
+
+		.mui-slider .mui-slider-group .mui-slider-item img {
+			width: auto;
+			height: auto;
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+			width: 100%;
+		}
+
+		.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+			display: inline-table;
+		}
+
+		.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		.mui-preview-loading {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			display: none;
+		}
+
+		.mui-preview-loading.mui-active {
+			display: block;
+		}
+
+		.mui-preview-loading .mui-spinner-white {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -25px;
+			margin-top: -25px;
+			height: 50px;
+			width: 50px;
+		}
+
+		.mui-preview-image img.mui-transitioning {
+			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+			transition: transform 0.5s ease, opacity 0.5s ease;
+		}
+
+		@-webkit-keyframes fadeIn {
+			0% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+
+		@keyframes fadeIn {
+			0% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+
+		@-webkit-keyframes fadeOut {
+			0% {
+				opacity: 1;
+			}
+			100% {
+				opacity: 0;
+			}
+		}
+
+		@keyframes fadeOut {
+			0% {
+				opacity: 1;
+			}
+			100% {
+				opacity: 0;
+			}
+		}
+
+		p img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		.mui-content-padded {
+			background: #fff;
+			padding: 15px;
+			margin-bottom: 5px;
+			background: rgba(255, 255, 255, 1);
+			/*border-radius: 5px;*/
+		}
+
+		body {
+			font-family: "微软雅黑";
+		}
+
+		.right {
+			text-align: right;
+			font-size: 13px;
+		}
+
+		a {
+			text-decoration: none;
+			color: #111;
+		}
+
+		.mui-media-body {
+			line-height: 42px;
+			font-size: 18px;
+			font-weight: 900;
+		}
+
+		.mui-table-view {
+			padding: 0 5px;
+			background: transparent !important;
+		}
+
+		.mui-table-view:before {
+			background: none;
+		}
+
+		.mui-table-view:after {
+			background: none;
+		}
+
+		.mui-table-view-cell {
+			/*background: linear-gradient(#e36368,#d34249);*/
+			background: rgba(255, 255, 255, 1);
+			border-top-left-radius: 30px;
+			border-bottom-right-radius: 30px;
+		}
+
+		img {
+			width: 100%;
+		}
+
+		.mui-content-padded {
+			margin: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<!--<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">image viewer（图片预览）</h1>
 		</header>-->
-		<div class="mui-content">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="http://www.bjzdb.gov.cn/bjzdb/c100082/images/50492394345743c095da3a27c2cc3ea3.jpg">
-						<div class="mui-media-body">
-							冬奥会场馆
-						</div>
-					</a>
-				</li>
-			</ul>
-			<a href="dahcgjs/17.html">
-				<div class="mui-content-padded">
-					<h4>蔡奇在北京赛区调研冬奥会筹办工作时强调 以时不我待的紧迫感抓好冬奥筹办工作</h4>
-					<p>继本市全面推进冬奥筹办工作动员部署大会和3月24日到延庆赛区调研后，3月27日下午，市委书记、北京冬奥组委主席蔡奇来到北京赛区调研检查冬奥场馆建设情况，现场调度推进筹办工作...</p>
-					<p class="right">日期：2018-03-28</p>
-				</div>
-			</a>
-			<a href="dahcgjs/16.html">
-				<div class="mui-content-padded">
-					<h4>蔡奇在延庆区调研冬奥会世园会筹办工作时强调 高质高效落实延庆赛区筹办任务</h4>
-					<p>本市全面推进冬奥会和冬残奥会筹办工作动员部署大会第二天，市委书记蔡奇就来到延庆调研冬奥赛区建设情况，现场推进筹办工作...</p>
-					<p class="right">日期：2018-03-27</p>
-				</div>
-			</a>
-			<a href="dahcgjs/15.html">
-				<div class="mui-content-padded">
-					<h4>蔡奇在北京市全面推进2022年冬奥会和冬残奥会筹办工作动员部署大会上强调 全力以赴做好“北京周期”各项筹办工作 陈吉宁主持 苟仲文张海迪李伟吉林出席</h4>
-					<p>冬奥筹办已正式进入“北京周期”。3月23日上午，在北京冬奥组委办公地点首钢老厂区礼堂内，本市召开全面推进2022年冬奥会和冬残奥会筹办工作动员部署大会...</p>
-					<p class="right">日期：2018-03-27</p>
-				</div>
-			</a>
-			<a href="dahcgjs/14.html">
-				<div class="mui-content-padded">
-					<h4>国家速滑馆工程全国“两会”期间持续安全施工</h4>
-					<p>为确保国家速滑馆工程建设顺利推进，全国“两会”期间国家速滑馆工程持续施工...</p>
-					<p class="right">日期：2018-03-26</p>
-				</div>
-			</a>
-			<a href="dahcgjs/13.html">
-				<div class="mui-content-padded">
-					<h4>服务2022年北京冬奥会的张北柔性直流电网示范工程（北京段）开工</h4>
-					<p>服务2022年北京冬奥会的张北柔性直流电网示范工程（北京段）开工...</p>
-					<p class="right">日期：2018-03-13</p>
-				</div>
-			</a>
-			<a href="dahcgjs/12.html">
-				<div class="mui-content-padded">
-					<h4>市重大项目办调研北京冬奥会延庆赛区工程建设工作</h4>
-					<p>3月7日，徐贱云主任、丁建明副主任和延庆区常务副区长谢文征等同志，到北京冬奥会延庆赛区调研工程建设有关工作...</p>
-					<p class="right">日期：2018-03-13</p>
-				</div>
-			</a>
-			<a href="dahcgjs/11.html">
-				<div class="mui-content-padded">
-					<h4>冬奥会延庆赛区重要赛时保障工程外部综合管廊盾构段开始掘进</h4>
-					<p>冬奥会延庆赛区重要赛时保障工程外部综合管廊盾构段开始掘进...</p>
-					<p class="right">日期：2018-03-13</p>
-				</div>
-			</a>
-			<a href="dahcgjs/10.html">
-				<div class="mui-content-padded">
-					<h4>市重大项目办部署全国“两会”期间冬奥会工程安保工作</h4>
-					<p>3月1日，市重大项目办组织市公安局内保局、市公安局消防局对全国“两会”期间冬奥会工程安保工作进行部署...</p>
-					<p class="right">日期：2018-03-02</p>
-				</div>
-			</a>
-			<a href="dahcgjs/9.html">
-				<div class="mui-content-padded">
-					<h4>北京2022年冬奥会延庆赛区核心区春节期间安全保障工作稳妥进行</h4>
-					<p><img src="http://www.bjzdb.gov.cn/bjzdb/dahcjs/2018-02/26/1050978/images/c62ac0e5d9f44feab66dfbf1de4f7ea5.jpg" alt=""></p>
-					<p>为确保冬奥会延庆赛区核心区2018年春节期间施工现场安全，严防火灾发生，针对延庆赛区核心区施工现场冬季防火特点...</p>
-					<p class="right">日期：2018-02-26</p>
-				</div>
-			</a>
-			<a href="dahcgjs/8.html">
-				<div class="mui-content-padded">
-					<h4>市重大项目办组织召开2022年冬奥会北京赛区已开工项目春节前安全工作部署会</h4>
-					<p>
-						<img src="http://www.bjzdb.gov.cn/bjzdb/dahcjs/2018-02/13/1050938/images/da5991574d6646f4bb5c2f52cf853622.jpg" data-preview-src="" data-preview-group="1" />
-					</p>
-					<p>为进一步加强北京2022年冬奥会北京赛区已开工建设的国家速滑馆、冬奥村人才公租房、五棵松冰上运动中心的安全质量管理工作...</p>
-					<p class="right">日期：2018-02-13</p>
-				</div>
-			</a>
-			
-			<a href="dahcgjs/6.html">
-				<div class="mui-content-padded">
-					<h4>国家速滑馆抗震设防设计通过专家论证</h4>
-					<p>12月11日召开了国家速滑馆抗震设防设计专项审查专家论证会，审查会原则通过了国家速滑馆抗震设防设计报告...</p>
-					<p class="right">日期：2017-12-14</p>
-				</div>
-			</a>
-			<a href="dahcgjs/7.html">
-				<div class="mui-content-padded">
-					<h4>市重大项目办对2022年冬奥会城区场馆施工安全进行检查</h4>
-					<p>近日，市重大项目办联合市安监局、市住建委、市公安局消防局对2022年冬奥会新建国家速滑馆（速度滑冰比赛场馆）和首体综合训练馆（短道速滑训练馆）施工安全管理工作进行检查...</p>
-					<p class="right">日期：2017-12-12</p>
-				</div>
-			</a>
-			
-			
-			
-			<a href="dahcgjs/5.html">
-				<div class="mui-content-padded">
-					<h4>北京2022年冬奥会、冬残奥会延庆赛区场馆建设运营公开招募合作者</h4>
-					<img src="http://p1.img.cctvpic.com/cportal/img/photoAlbum/page/performance/img/2017/11/17/1510886830720_150_553x378.png"/>
-					<p>今天（11月17日）上午，北京2022年冬奥会、冬残奥会延庆赛区政府和社会资本合作（PPP）项目推介暨新闻发布会在北京市人民政府新闻办公室召开...</p>
-					<p class="right">日期：2017-11-17</p>
-				</div>
-			</a>
-			<a href="dahcgjs/1.html">
-				<div class="mui-content-padded">
-						<h4>冬奥会国家速滑馆PPP项目招标资格预审工作顺利完成</h4>
-						<p>该项目共10家企业报名，经专家组评审，有7家企业通过了资格预审。市重大项目办、市发展改革委、市住房城乡建设委、市体育局和冬奥组委规划发展部组成的联合监督小组对专家抽取、评标等程序进行了全过程监督。</p>
-						<p class="right">日期：2017-11-06</p>
-				</div>
-			</a>
-			<a href="dahcgjs/2.html">
-				<div class="mui-content-padded">
-					<h4>十九大报道：北京冬奥会场馆和基础设施建设已全面开工</h4>
-					<p>北京新闻报道，十九大代表、北京市副市长张建东19日在党的十九大北京代表团分组讨论时表示，2022年北京冬奥会场馆和基础设施建设目前已经全面开工...</p>
-					<p class="right">日期：2017-10-20</p>
-				</div>
-			</a>
-				<a href="dahcgjs/3.html">
-				<div class="mui-content-padded">
-					<h4>市重大项目办召开国家速滑馆和冬运中心综合训练馆土方工程建设安全质量工作交底会</h4>
-					<p>2017年9月28日,市重大项目办召开国家速滑馆和冬运中心综合训练馆土方工程建设安全质量工作交底会。...</p>
-					<p class="right">日期：2017-10-09</p>
-				</div>
+	<div class="mui-content">
+		<ul class="mui-table-view mui-table-view-chevron">
+			<li class="mui-table-view-cell mui-media">
+				<a href="javascript:;">
+					<img class="mui-media-object mui-pull-left" src="http://www.bjzdb.gov.cn/bjzdb/c100082/images/50492394345743c095da3a27c2cc3ea3.jpg">
+					<div class="mui-media-body">
+						冬奥会场馆
+					</div>
 				</a>
-			<a href="dahcgjs/4.html">
-				<div class="mui-content-padded">
-					<h4>北京2022年冬奥会及残奥会延庆赛区高山滑雪中心、雪车雪橇中心及配套基础设施项目水保监测及验收、水保监理及环境监理、监测工程定标</h4>
-					<p>延庆赛区场馆及相关设施建设坚持绿色、环保理念，注重生态、环境建设，将环境保护监测工作、水土保持保护监测验收工作作为开工前置条件认真落实。由北京北控京奥建设有限公司负责实施的北京2022年冬奥会及残奥会延庆赛区高山滑雪中心、雪车雪橇中心及配套基础设施项目...</p>
-					<p class="right">日期：2017-08-01</p>
-				</div>
-			</a>
-		</div>
-	</body>
-	<script src="../js/mui.min.js"></script>
-	<script src="../js/mui.zoom.js"></script>
-	<script src="../js/mui.previewimage.js"></script>
-	<script>
-//		mui.previewImage();
-	</script>
+			</li>
+		</ul>
+		<a href="dahcgjs/23.html">
+			<div class="mui-content-padded">
+				<h4>“五一”节期间冬奥会北京赛区场馆工程建设持续安全施工</h4>
+				<p>为确保冬奥会北京赛区场馆工程建设顺利推进，“五一”前，市重大项目办会同市公安局消防总队对国家速滑馆、冬运中心综合训练馆和五棵松冰上运动中心等已开工场馆进行消防安全检查...</p>
+				<p class="right">日期：2018-05-03</p>
+			</div>
+		</a>
+		<a href="dahcgjs/22.html">
+			<div class="mui-content-padded">
+				<h4>市重大项目办对冬奥会海淀区内工程项目实施精准服务</h4>
+				<p>4月23日，市重大项目办组织海淀区重大办、城管执法局、交通支队、城市管理委等部门，到冬季运动管理中心综合训练馆、五棵松冰上运动中心现场办公...</p>
+				<p class="right">日期：2018-04-26</p>
+			</div>
+		</a>
+		<a href="dahcgjs/21.html">
+			<div class="mui-content-padded">
+				<h4>冬奥会延庆赛区安全管控工作逐项落地</h4>
+				<p>市重大项目办采取“四不两直”方式，对冬奥会延庆赛区国家高山滑雪中心、国家雪车雪橇中心及外围配套综合管廊建设项目安全质量工作落实情况进行跟踪督导...</p>
+				<p class="right">日期：2018-04-25</p>
+			</div>
+		</a>
+		<a href="dahcgjs/20.html">
+			<div class="mui-content-padded">
+				<h4>蔡奇在北京赛区调研冬奥会筹办工作时强调 以时不我待的紧迫感抓好冬奥筹办工作</h4>
+				<p>市重大项目办采取“四不两直”方式，对冬奥会延庆赛区国家高山滑雪中心、国家雪车雪橇中心及外围配套综合管廊建设项目安全质量工作落实情况进行跟踪督导...</p>
+				<p>
+					<img src="http://www.bjzdb.gov.cn/bjzdb/dahcjs/2018-04/25/1051347/images/aa776d1a93cf42aca64f9e06c8a42174.jpg" alt="">
+				</p>
+				<p class="right">日期：2018-04-25</p>
+			</div>
+		</a>
+		<!-- <a href="dahcgjs/17.html">
+			<div class="mui-content-padded">
+				<h4>蔡奇在北京赛区调研冬奥会筹办工作时强调 以时不我待的紧迫感抓好冬奥筹办工作</h4>
+				<p>继本市全面推进冬奥筹办工作动员部署大会和3月24日到延庆赛区调研后，3月27日下午，市委书记、北京冬奥组委主席蔡奇来到北京赛区调研检查冬奥场馆建设情况，现场调度推进筹办工作...</p>
+				<p class="right">日期：2018-03-28</p>
+			</div>
+		</a> -->
+		<!-- <a href="dahcgjs/16.html">
+			<div class="mui-content-padded">
+				<h4>蔡奇在延庆区调研冬奥会世园会筹办工作时强调 高质高效落实延庆赛区筹办任务</h4>
+				<p>本市全面推进冬奥会和冬残奥会筹办工作动员部署大会第二天，市委书记蔡奇就来到延庆调研冬奥赛区建设情况，现场推进筹办工作...</p>
+				<p class="right">日期：2018-03-27</p>
+			</div>
+		</a> -->
+		<!-- <a href="dahcgjs/15.html">
+			<div class="mui-content-padded">
+				<h4>蔡奇在北京市全面推进2022年冬奥会和冬残奥会筹办工作动员部署大会上强调 全力以赴做好“北京周期”各项筹办工作 陈吉宁主持 苟仲文张海迪李伟吉林出席</h4>
+				<p>冬奥筹办已正式进入“北京周期”。3月23日上午，在北京冬奥组委办公地点首钢老厂区礼堂内，本市召开全面推进2022年冬奥会和冬残奥会筹办工作动员部署大会...</p>
+				<p class="right">日期：2018-03-27</p>
+			</div>
+		</a> -->
+		<a href="dahcgjs/14.html">
+			<div class="mui-content-padded">
+				<h4>国家速滑馆工程全国“两会”期间持续安全施工</h4>
+				<p>为确保国家速滑馆工程建设顺利推进，全国“两会”期间国家速滑馆工程持续施工...</p>
+				<p class="right">日期：2018-03-26</p>
+			</div>
+		</a>
+		<a href="dahcgjs/13.html">
+			<div class="mui-content-padded">
+				<h4>服务2022年北京冬奥会的张北柔性直流电网示范工程（北京段）开工</h4>
+				<p>服务2022年北京冬奥会的张北柔性直流电网示范工程（北京段）开工...</p>
+				<p class="right">日期：2018-03-13</p>
+			</div>
+		</a>
+		<a href="dahcgjs/12.html">
+			<div class="mui-content-padded">
+				<h4>市重大项目办调研北京冬奥会延庆赛区工程建设工作</h4>
+				<p>3月7日，徐贱云主任、丁建明副主任和延庆区常务副区长谢文征等同志，到北京冬奥会延庆赛区调研工程建设有关工作...</p>
+				<p class="right">日期：2018-03-13</p>
+			</div>
+		</a>
+		<a href="dahcgjs/11.html">
+			<div class="mui-content-padded">
+				<h4>冬奥会延庆赛区重要赛时保障工程外部综合管廊盾构段开始掘进</h4>
+				<p>冬奥会延庆赛区重要赛时保障工程外部综合管廊盾构段开始掘进...</p>
+				<p class="right">日期：2018-03-13</p>
+			</div>
+		</a>
+		<a href="dahcgjs/10.html">
+			<div class="mui-content-padded">
+				<h4>市重大项目办部署全国“两会”期间冬奥会工程安保工作</h4>
+				<p>3月1日，市重大项目办组织市公安局内保局、市公安局消防局对全国“两会”期间冬奥会工程安保工作进行部署...</p>
+				<p class="right">日期：2018-03-02</p>
+			</div>
+		</a>
+		<a href="dahcgjs/9.html">
+			<div class="mui-content-padded">
+				<h4>北京2022年冬奥会延庆赛区核心区春节期间安全保障工作稳妥进行</h4>
+				<p>
+					<img src="http://www.bjzdb.gov.cn/bjzdb/dahcjs/2018-02/26/1050978/images/c62ac0e5d9f44feab66dfbf1de4f7ea5.jpg" alt="">
+				</p>
+				<p>为确保冬奥会延庆赛区核心区2018年春节期间施工现场安全，严防火灾发生，针对延庆赛区核心区施工现场冬季防火特点...</p>
+				<p class="right">日期：2018-02-26</p>
+			</div>
+		</a>
+		<a href="dahcgjs/8.html">
+			<div class="mui-content-padded">
+				<h4>市重大项目办组织召开2022年冬奥会北京赛区已开工项目春节前安全工作部署会</h4>
+				<p>
+					<img src="http://www.bjzdb.gov.cn/bjzdb/dahcjs/2018-02/13/1050938/images/da5991574d6646f4bb5c2f52cf853622.jpg" data-preview-src=""
+					    data-preview-group="1" />
+				</p>
+				<p>为进一步加强北京2022年冬奥会北京赛区已开工建设的国家速滑馆、冬奥村人才公租房、五棵松冰上运动中心的安全质量管理工作...</p>
+				<p class="right">日期：2018-02-13</p>
+			</div>
+		</a>
+
+		<a href="dahcgjs/6.html">
+			<div class="mui-content-padded">
+				<h4>国家速滑馆抗震设防设计通过专家论证</h4>
+				<p>12月11日召开了国家速滑馆抗震设防设计专项审查专家论证会，审查会原则通过了国家速滑馆抗震设防设计报告...</p>
+				<p class="right">日期：2017-12-14</p>
+			</div>
+		</a>
+		<a href="dahcgjs/7.html">
+			<div class="mui-content-padded">
+				<h4>市重大项目办对2022年冬奥会城区场馆施工安全进行检查</h4>
+				<p>近日，市重大项目办联合市安监局、市住建委、市公安局消防局对2022年冬奥会新建国家速滑馆（速度滑冰比赛场馆）和首体综合训练馆（短道速滑训练馆）施工安全管理工作进行检查...</p>
+				<p class="right">日期：2017-12-12</p>
+			</div>
+		</a>
+
+
+
+		<a href="dahcgjs/5.html">
+			<div class="mui-content-padded">
+				<h4>北京2022年冬奥会、冬残奥会延庆赛区场馆建设运营公开招募合作者</h4>
+				<img src="http://p1.img.cctvpic.com/cportal/img/photoAlbum/page/performance/img/2017/11/17/1510886830720_150_553x378.png"
+				/>
+				<p>今天（11月17日）上午，北京2022年冬奥会、冬残奥会延庆赛区政府和社会资本合作（PPP）项目推介暨新闻发布会在北京市人民政府新闻办公室召开...</p>
+				<p class="right">日期：2017-11-17</p>
+			</div>
+		</a>
+		<a href="dahcgjs/1.html">
+			<div class="mui-content-padded">
+				<h4>冬奥会国家速滑馆PPP项目招标资格预审工作顺利完成</h4>
+				<p>该项目共10家企业报名，经专家组评审，有7家企业通过了资格预审。市重大项目办、市发展改革委、市住房城乡建设委、市体育局和冬奥组委规划发展部组成的联合监督小组对专家抽取、评标等程序进行了全过程监督。</p>
+				<p class="right">日期：2017-11-06</p>
+			</div>
+		</a>
+		<a href="dahcgjs/2.html">
+			<div class="mui-content-padded">
+				<h4>十九大报道：北京冬奥会场馆和基础设施建设已全面开工</h4>
+				<p>北京新闻报道，十九大代表、北京市副市长张建东19日在党的十九大北京代表团分组讨论时表示，2022年北京冬奥会场馆和基础设施建设目前已经全面开工...</p>
+				<p class="right">日期：2017-10-20</p>
+			</div>
+		</a>
+		<a href="dahcgjs/3.html">
+			<div class="mui-content-padded">
+				<h4>市重大项目办召开国家速滑馆和冬运中心综合训练馆土方工程建设安全质量工作交底会</h4>
+				<p>2017年9月28日,市重大项目办召开国家速滑馆和冬运中心综合训练馆土方工程建设安全质量工作交底会。...</p>
+				<p class="right">日期：2017-10-09</p>
+			</div>
+		</a>
+		<a href="dahcgjs/4.html">
+			<div class="mui-content-padded">
+				<h4>北京2022年冬奥会及残奥会延庆赛区高山滑雪中心、雪车雪橇中心及配套基础设施项目水保监测及验收、水保监理及环境监理、监测工程定标</h4>
+				<p>延庆赛区场馆及相关设施建设坚持绿色、环保理念，注重生态、环境建设，将环境保护监测工作、水土保持保护监测验收工作作为开工前置条件认真落实。由北京北控京奥建设有限公司负责实施的北京2022年冬奥会及残奥会延庆赛区高山滑雪中心、雪车雪橇中心及配套基础设施项目...</p>
+				<p class="right">日期：2017-08-01</p>
+			</div>
+		</a>
+	</div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/mui.zoom.js"></script>
+<script src="../js/mui.previewimage.js"></script>
+<script>
+	//		mui.previewImage();
+</script>
 
 </html>
