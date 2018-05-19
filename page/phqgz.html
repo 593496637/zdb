@@ -1,396 +1,408 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>棚户区改造</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<!--标准mui.css-->
-	<link rel="stylesheet" href="../css/mui.min.css">
-	<!--App自定义的css-->
-	<style type="text/css">
-		html {
-			background: url(../img/bj/1357f1eed180efd4.jpg);
-			background-attachment: fixed;
-			background-size: contain;
-		}
+  <meta charset="utf-8">
+  <title>棚户区改造</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!--标准mui.css-->
+  <link rel="stylesheet" href="../css/mui.min.css">
+  <!--App自定义的css-->
+  <style type="text/css">
+    html {
+      background: url(../img/bj/1357f1eed180efd4.jpg);
+      background-attachment: fixed;
+      background-size: contain;
+    }
 
-		body {
-			background: transparent !important;
-		}
+    body {
+      background: transparent !important;
+    }
 
-		.mui-content {
-			background: transparent;
-		}
+    .mui-content {
+      background: transparent;
+    }
 
-		.mui-preview-image.mui-fullscreen {
-			position: fixed;
-			z-index: 20;
-			background-color: #000;
-		}
+    .mui-preview-image.mui-fullscreen {
+      position: fixed;
+      z-index: 20;
+      background-color: #000;
+    }
 
-		.mui-preview-header,
-		.mui-preview-footer {
-			position: absolute;
-			width: 100%;
-			left: 0;
-			z-index: 10;
-		}
+    .mui-preview-header,
+    .mui-preview-footer {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      z-index: 10;
+    }
 
-		.mui-preview-header {
-			height: 44px;
-			top: 0;
-		}
+    .mui-preview-header {
+      height: 44px;
+      top: 0;
+    }
 
-		.mui-preview-footer {
-			height: 50px;
-			bottom: 0px;
-		}
+    .mui-preview-footer {
+      height: 50px;
+      bottom: 0px;
+    }
 
-		.mui-preview-header .mui-preview-indicator {
-			display: block;
-			line-height: 25px;
-			color: #fff;
-			text-align: center;
-			margin: 15px auto 4;
-			width: 70px;
-			background-color: rgba(0, 0, 0, 0.4);
-			border-radius: 12px;
-			font-size: 16px;
-		}
+    .mui-preview-header .mui-preview-indicator {
+      display: block;
+      line-height: 25px;
+      color: #fff;
+      text-align: center;
+      margin: 15px auto 4;
+      width: 70px;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      font-size: 16px;
+    }
 
-		.mui-preview-image {
-			display: none;
-			-webkit-animation-duration: 0.5s;
-			animation-duration: 0.5s;
-			-webkit-animation-fill-mode: both;
-			animation-fill-mode: both;
-		}
+    .mui-preview-image {
+      display: none;
+      -webkit-animation-duration: 0.5s;
+      animation-duration: 0.5s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
 
-		.mui-preview-image.mui-preview-in {
-			-webkit-animation-name: fadeIn;
-			animation-name: fadeIn;
-		}
+    .mui-preview-image.mui-preview-in {
+      -webkit-animation-name: fadeIn;
+      animation-name: fadeIn;
+    }
 
-		.mui-preview-image.mui-preview-out {
-			background: none;
-			-webkit-animation-name: fadeOut;
-			animation-name: fadeOut;
-		}
+    .mui-preview-image.mui-preview-out {
+      background: none;
+      -webkit-animation-name: fadeOut;
+      animation-name: fadeOut;
+    }
 
-		.mui-preview-image.mui-preview-out .mui-preview-header,
-		.mui-preview-image.mui-preview-out .mui-preview-footer {
-			display: none;
-		}
+    .mui-preview-image.mui-preview-out .mui-preview-header,
+    .mui-preview-image.mui-preview-out .mui-preview-footer {
+      display: none;
+    }
 
-		.mui-zoom-scroller {
-			position: absolute;
-			display: -webkit-box;
-			display: -webkit-flex;
-			display: flex;
-			-webkit-box-align: center;
-			-webkit-align-items: center;
-			align-items: center;
-			-webkit-box-pack: center;
-			-webkit-justify-content: center;
-			justify-content: center;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			margin: 0;
-			-webkit-backface-visibility: hidden;
-		}
+    .mui-zoom-scroller {
+      position: absolute;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      -webkit-backface-visibility: hidden;
+    }
 
-		.mui-zoom {
-			-webkit-transform-style: preserve-3d;
-			transform-style: preserve-3d;
-		}
+    .mui-zoom {
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
 
-		.mui-slider .mui-slider-group .mui-slider-item img {
-			width: auto;
-			height: auto;
-			max-width: 100%;
-			max-height: 100%;
-		}
+    .mui-slider .mui-slider-group .mui-slider-item img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
 
-		.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
-			width: 100%;
-		}
+    .mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+      width: 100%;
+    }
 
-		.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
-			display: inline-table;
-		}
+    .mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+      display: inline-table;
+    }
 
-		.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
-			display: table-cell;
-			vertical-align: middle;
-		}
+    .mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+      display: table-cell;
+      vertical-align: middle;
+    }
 
-		.mui-preview-loading {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			display: none;
-		}
+    .mui-preview-loading {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: none;
+    }
 
-		.mui-preview-loading.mui-active {
-			display: block;
-		}
+    .mui-preview-loading.mui-active {
+      display: block;
+    }
 
-		.mui-preview-loading .mui-spinner-white {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-left: -25px;
-			margin-top: -25px;
-			height: 50px;
-			width: 50px;
-		}
+    .mui-preview-loading .mui-spinner-white {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -25px;
+      margin-top: -25px;
+      height: 50px;
+      width: 50px;
+    }
 
-		.mui-preview-image img.mui-transitioning {
-			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
-			transition: transform 0.5s ease, opacity 0.5s ease;
-		}
+    .mui-preview-image img.mui-transitioning {
+      -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
 
-		@-webkit-keyframes fadeIn {
-			0% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
 
-		@keyframes fadeIn {
-			0% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
 
-		@-webkit-keyframes fadeOut {
-			0% {
-				opacity: 1;
-			}
-			100% {
-				opacity: 0;
-			}
-		}
+    @-webkit-keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
 
-		@keyframes fadeOut {
-			0% {
-				opacity: 1;
-			}
-			100% {
-				opacity: 0;
-			}
-		}
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
 
-		p img {
-			max-width: 100%;
-			height: auto;
-		}
+    p img {
+      max-width: 100%;
+      height: auto;
+    }
 
-		.mui-content-padded {
-			background: #fff;
-			padding: 5px;
-			margin-bottom: 5px;
-			background: rgba(255, 255, 255, 1);
-			/*border-radius: 5px;*/
-		}
+    .mui-content-padded {
+      background: #fff;
+      padding: 5px;
+      margin-bottom: 5px;
+      background: rgba(255, 255, 255, 1);
+      /*border-radius: 5px;*/
+    }
 
-		body {
-			font-family: "微软雅黑";
-		}
+    body {
+      font-family: "微软雅黑";
+    }
 
-		.right {
-			text-align: right;
-			font-size: 13px;
-		}
+    .right {
+      text-align: right;
+      font-size: 13px;
+    }
 
-		a {
-			text-decoration: none;
-			color: #111;
-		}
+    a {
+      text-decoration: none;
+      color: #111;
+    }
 
-		.mui-media-body {
-			line-height: 42px;
-			font-size: 18px;
-			font-weight: 900;
-		}
+    .mui-media-body {
+      line-height: 42px;
+      font-size: 18px;
+      font-weight: 900;
+    }
 
-		.mui-table-view {
-			padding: 0 5px;
-			background: transparent !important;
-		}
+    .mui-table-view {
+      padding: 0 5px;
+      background: transparent !important;
+    }
 
-		.mui-table-view:before {
-			background: none;
-		}
+    .mui-table-view:before {
+      background: none;
+    }
 
-		.mui-table-view:after {
-			background: none;
-		}
+    .mui-table-view:after {
+      background: none;
+    }
 
-		.mui-table-view-cell {
-			/*background: linear-gradient(#e36368,#d34249);*/
-			background: rgba(255, 255, 255, 1);
-			border-top-left-radius: 30px;
-			border-bottom-right-radius: 30px;
-		}
+    .mui-table-view-cell {
+      /*background: linear-gradient(#e36368,#d34249);*/
+      background: rgba(255, 255, 255, 1);
+      border-top-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
 
-		.mui-content-padded {
-			margin: 5px;
-		}
-	</style>
+    .mui-content-padded {
+      margin: 5px;
+    }
+
+  </style>
 </head>
 
 <body>
-	<!--<header class="mui-bar mui-bar-nav">
+  <!--<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">image viewer（图片预览）</h1>
 		</header>-->
-	<div class="mui-content">
-		<ul class="mui-table-view mui-table-view-chevron">
-			<li class="mui-table-view-cell mui-media">
-				<a href="javascript:;">
-					<img class="mui-media-object mui-pull-left" src="http://www.bjzdb.gov.cn/bjzdb/c100081/images/98a8bd944cff4700961d7ec8ccabeef0.jpg">
-					<div class="mui-media-body">
-						棚户区改造
-					</div>
-				</a>
-			</li>
-		</ul>
-		<a href="phqgz/16.html">
-			<div class="mui-content-padded">
-				<h4>1-4月份，全市累计完成棚户区全年改造任务的67%</h4>
-				<p>完成棚户区改造15773户，涉及人口约8.46万人。石景山区、门头沟区、房山区、延庆区等4个区已完成全年改造任务...</p>
-				<p class="right">日期：2018-05-04</p>
-			</div>
-		</a>
-		<a href="phqgz/15.html">
-			<div class="mui-content-padded">
-				<h4>朝阳区孙河乡前苇沟组团和东坝北西区域项目完成住宅腾退签约率达100%</h4>
-				<p>孙河前苇沟组团项目位于孙河乡，涉及前苇沟村、沙子营村、上辛堡村及黄港村等4个村的整体改造，占地面积669公顷...</p>
-				<p class="right">日期：2018-04-26</p>
-			</div>
-		</a>
-		<a href="phqgz/14.html">
-			<div class="mui-content-padded">
-				<h4>市重大项目办就棚改工作赴东城区现场办公</h4>
-				<p>为进一步加快东城区棚改工作有序进行，4月12日，市重大项目办到东城区现场查看望坛、天坛周边简易楼腾退、天坛东里北区1-8号楼腾退工程、南中轴路周边等项目进展情况并了解存在问题...</p>
-				<p class="right">日期：2018-04-24</p>
-			</div>
-		</a>
-		<a href="phqgz/13.html">
-			<div class="mui-content-padded">
-				<h4>1-3月份全市累计完成棚户区改造13265户 占全年任务的56%</h4>
-				<p>1-3月份，全市累计完成棚户区改造13265户，占全年任务的56%。涉及人口约7.2万人，占全年任务的85%...</p>
-				<p class="right">日期：2018-03-30</p>
-			</div>
-		</a>
-		<a href="phqgz/12.html">
-			<div class="mui-content-padded">
-				<h4>1-2月份本市完成棚户区改造8354户 占全年23550户的35%</h4>
-				<p>1-2月份本市完成棚户区改造8354户，占全年23550户的35%...</p>
-				<p class="right">日期：2018-03-07</p>
-			</div>
-		</a>
-		<a href="phqgz/11.html">
-			<div class="mui-content-padded">
-				<h4>北京市人民政府办公厅关于印发《北京市2018年棚户区改造和环境整治任务》的通知</h4>
-				<p>《北京市2018年棚户区改造和环境整治任务》已经市政府同意，现印发给你们，并就有关事项通知如下...</p>
-				<p class="right">日期：2018-02-06</p>
-			</div>
-		</a>
-		<a href="phqgz/10.html">
-			<div class="mui-content-padded">
-				<h4>本市棚户区改造完成全年任务的21%</h4>
-				<p>1月份，全市累计完成棚户区改造4933户，占全年（23550）户任务的21%...</p>
-				<p class="right">日期：2018-02-02</p>
-			</div>
-		</a>
-		<a href="phqgz/9.html">
-			<div class="mui-content-padded">
-				<h4>东城区新中西里20-22号简易楼腾退及环境整治项目征收预签约比例达到100%</h4>
-				<p>东城区新中西里20-22号简易楼腾退及环境整治项目征收预签约比例实现达到100%...</p>
-				<p class="right">日期：2018-01-09</p>
-			</div>
-		</a>
-		<a href="phqgz/8.html">
-			<div class="mui-content-padded">
-				<h4>12月份，本市棚户区改造完成全年任务的138%</h4>
-				<p>1-12月份，全市累计完成棚户区改造49540户，占全年任务(36000户)的138%，16个区全部完成与市政府签订责任书目标...</p>
-				<p class="right">日期：2018-01-04</p>
-			</div>
-		</a>
-		<a href="phqgz/6.html">
-			<div class="mui-content-padded">
-				<h4>创新融资模式，支持棚改融资430亿元</h4>
-				<p>近期，通州区东方厂周边棚户区改造项目(绿心项目)获得国开行创新模式融资支持...</p>
-				<p class="right">日期：2017-12-22</p>
-			</div>
-		</a>
-		<a href="phqgz/7.html">
-			<div class="mui-content-padded">
-				<h4>衙门口棚户区改造项目房屋征收工作正式启动</h4>
-				<p>签约期限自2017年12月12日至2018年1月28日,共48天...</p>
-				<p class="right">日期：2017-12-13</p>
-			</div>
-		</a>
-		<a href="phqgz/5.html">
-			<div class="mui-content-padded">
-				<h4>11月份本市棚户区改造工作完成全年任务的127%</h4>
-				<p>1-11月份，全市累计完成棚户区改造45553户，占全年任务的127%。东城区、西城区等15个区已经提前完成全年户数任务...</p>
-				<p class="right">日期：2017-12-04</p>
-			</div>
-		</a>
-		<a href="phqgz/1.html">
-			<div class="mui-content-padded">
-				<h4>2017年北京市棚户区改造10月份进展情况</h4>
-				<p>1-10月份，全市累计完成棚户区改造完成42204户...</p>
-				<p class="right">日期：2017-11-06</p>
-			</div>
-		</a>
-		<a href="phqgz/2.html">
-			<div class="mui-content-padded">
-				<h4>9月份本市棚户区改造和环境整治工作提前超额完成全年任务</h4>
-				<p>1-9月份，全市累计完成棚户区改造40718户，比去年同期增长46%...</p>
-				<p class="right">日期：2017-10-10</p>
-			</div>
-		</a>
-		<a href="phqgz/3.html">
-			<div class="mui-content-padded">
-				<h4>2017年北京市棚户区改造和环境整治工作9月份月报</h4>
-				<p>
-					<img src="http://www.bjzdb.gov.cn/phqgz/W020171009403360408120.png" />
-				</p>
-				<p>截至9月底，全市棚户区改造户数、投资、涉及人口均提前超额完成全年任务。1-9月份，全市累计完成棚户区改造(签订改造协议、搬迁腾退及修缮加固)40718户，占全年任务36000户的113%...</p>
-				<p class="right">日期：2017-10-09</p>
-			</div>
-		</a>
-		<a href="phqgz/4.html">
-			<div class="mui-content-padded">
-				<h4>2017年8月份重大项目进展月报--棚户区改造工作</h4>
-				<p>2017年1-8月份，全市累计签订改造协议、搬迁腾退及修缮加固（以下简称“完成改造”）30100户，占全年任务(36000户)的84%。累计完成投资约646.2亿元，占全年任务（750亿元）的86.16%...</p>
-				<p class="right">日期：2017-09-28</p>
-			</div>
-		</a>
-	</div>
+  <div class="mui-content">
+    <ul class="mui-table-view mui-table-view-chevron">
+      <li class="mui-table-view-cell mui-media">
+        <a href="javascript:;">
+          <img class="mui-media-object mui-pull-left" src="http://www.bjzdb.gov.cn/bjzdb/c100081/images/98a8bd944cff4700961d7ec8ccabeef0.jpg">
+          <div class="mui-media-body">
+            棚户区改造
+          </div>
+        </a>
+      </li>
+    </ul>
+    <a href="phqgz/17.html">
+      <div class="mui-content-padded">
+        <h4>魏公村小区棚改项目回迁安置房正式开工建设</h4>
+
+        <p>2018年5月13日，魏公村小区棚改项目回迁安置房正式开工建设...</p>
+
+        <p class="right">日期：2018-05-16</p>
+
+      </div>
+    </a>
+    <a href="phqgz/16.html">
+      <div class="mui-content-padded">
+        <h4>1-4月份，全市累计完成棚户区全年改造任务的67%</h4>
+        <p>完成棚户区改造15773户，涉及人口约8.46万人。石景山区、门头沟区、房山区、延庆区等4个区已完成全年改造任务...</p>
+        <p class="right">日期：2018-05-04</p>
+      </div>
+    </a>
+    <a href="phqgz/15.html">
+      <div class="mui-content-padded">
+        <h4>朝阳区孙河乡前苇沟组团和东坝北西区域项目完成住宅腾退签约率达100%</h4>
+        <p>孙河前苇沟组团项目位于孙河乡，涉及前苇沟村、沙子营村、上辛堡村及黄港村等4个村的整体改造，占地面积669公顷...</p>
+        <p class="right">日期：2018-04-26</p>
+      </div>
+    </a>
+    <a href="phqgz/14.html">
+      <div class="mui-content-padded">
+        <h4>市重大项目办就棚改工作赴东城区现场办公</h4>
+        <p>为进一步加快东城区棚改工作有序进行，4月12日，市重大项目办到东城区现场查看望坛、天坛周边简易楼腾退、天坛东里北区1-8号楼腾退工程、南中轴路周边等项目进展情况并了解存在问题...</p>
+        <p class="right">日期：2018-04-24</p>
+      </div>
+    </a>
+    <a href="phqgz/13.html">
+      <div class="mui-content-padded">
+        <h4>1-3月份全市累计完成棚户区改造13265户 占全年任务的56%</h4>
+        <p>1-3月份，全市累计完成棚户区改造13265户，占全年任务的56%。涉及人口约7.2万人，占全年任务的85%...</p>
+        <p class="right">日期：2018-03-30</p>
+      </div>
+    </a>
+    <a href="phqgz/12.html">
+      <div class="mui-content-padded">
+        <h4>1-2月份本市完成棚户区改造8354户 占全年23550户的35%</h4>
+        <p>1-2月份本市完成棚户区改造8354户，占全年23550户的35%...</p>
+        <p class="right">日期：2018-03-07</p>
+      </div>
+    </a>
+    <a href="phqgz/11.html">
+      <div class="mui-content-padded">
+        <h4>北京市人民政府办公厅关于印发《北京市2018年棚户区改造和环境整治任务》的通知</h4>
+        <p>《北京市2018年棚户区改造和环境整治任务》已经市政府同意，现印发给你们，并就有关事项通知如下...</p>
+        <p class="right">日期：2018-02-06</p>
+      </div>
+    </a>
+    <a href="phqgz/10.html">
+      <div class="mui-content-padded">
+        <h4>本市棚户区改造完成全年任务的21%</h4>
+        <p>1月份，全市累计完成棚户区改造4933户，占全年（23550）户任务的21%...</p>
+        <p class="right">日期：2018-02-02</p>
+      </div>
+    </a>
+    <a href="phqgz/9.html">
+      <div class="mui-content-padded">
+        <h4>东城区新中西里20-22号简易楼腾退及环境整治项目征收预签约比例达到100%</h4>
+        <p>东城区新中西里20-22号简易楼腾退及环境整治项目征收预签约比例实现达到100%...</p>
+        <p class="right">日期：2018-01-09</p>
+      </div>
+    </a>
+    <a href="phqgz/8.html">
+      <div class="mui-content-padded">
+        <h4>12月份，本市棚户区改造完成全年任务的138%</h4>
+        <p>1-12月份，全市累计完成棚户区改造49540户，占全年任务(36000户)的138%，16个区全部完成与市政府签订责任书目标...</p>
+        <p class="right">日期：2018-01-04</p>
+      </div>
+    </a>
+    <a href="phqgz/6.html">
+      <div class="mui-content-padded">
+        <h4>创新融资模式，支持棚改融资430亿元</h4>
+        <p>近期，通州区东方厂周边棚户区改造项目(绿心项目)获得国开行创新模式融资支持...</p>
+        <p class="right">日期：2017-12-22</p>
+      </div>
+    </a>
+    <a href="phqgz/7.html">
+      <div class="mui-content-padded">
+        <h4>衙门口棚户区改造项目房屋征收工作正式启动</h4>
+        <p>签约期限自2017年12月12日至2018年1月28日,共48天...</p>
+        <p class="right">日期：2017-12-13</p>
+      </div>
+    </a>
+    <a href="phqgz/5.html">
+      <div class="mui-content-padded">
+        <h4>11月份本市棚户区改造工作完成全年任务的127%</h4>
+        <p>1-11月份，全市累计完成棚户区改造45553户，占全年任务的127%。东城区、西城区等15个区已经提前完成全年户数任务...</p>
+        <p class="right">日期：2017-12-04</p>
+      </div>
+    </a>
+    <a href="phqgz/1.html">
+      <div class="mui-content-padded">
+        <h4>2017年北京市棚户区改造10月份进展情况</h4>
+        <p>1-10月份，全市累计完成棚户区改造完成42204户...</p>
+        <p class="right">日期：2017-11-06</p>
+      </div>
+    </a>
+    <a href="phqgz/2.html">
+      <div class="mui-content-padded">
+        <h4>9月份本市棚户区改造和环境整治工作提前超额完成全年任务</h4>
+        <p>1-9月份，全市累计完成棚户区改造40718户，比去年同期增长46%...</p>
+        <p class="right">日期：2017-10-10</p>
+      </div>
+    </a>
+    <a href="phqgz/3.html">
+      <div class="mui-content-padded">
+        <h4>2017年北京市棚户区改造和环境整治工作9月份月报</h4>
+        <p>
+          <img src="http://www.bjzdb.gov.cn/phqgz/W020171009403360408120.png" />
+        </p>
+        <p>截至9月底，全市棚户区改造户数、投资、涉及人口均提前超额完成全年任务。1-9月份，全市累计完成棚户区改造(签订改造协议、搬迁腾退及修缮加固)40718户，占全年任务36000户的113%...</p>
+        <p class="right">日期：2017-10-09</p>
+      </div>
+    </a>
+    <a href="phqgz/4.html">
+      <div class="mui-content-padded">
+        <h4>2017年8月份重大项目进展月报--棚户区改造工作</h4>
+        <p>2017年1-8月份，全市累计签订改造协议、搬迁腾退及修缮加固（以下简称“完成改造”）30100户，占全年任务(36000户)的84%。累计完成投资约646.2亿元，占全年任务（750亿元）的86.16%...</p>
+        <p class="right">日期：2017-09-28</p>
+      </div>
+    </a>
+  </div>
 </body>
 <script src="../js/mui.min.js"></script>
 <script src="../js/mui.zoom.js"></script>
 <script src="../js/mui.previewimage.js"></script>
 <script>
-	//		mui.previewImage();
+  //		mui.previewImage();
+
 </script>
 
 </html>

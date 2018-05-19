@@ -1,413 +1,428 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>轨道交通</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<!--标准mui.css-->
-	<link rel="stylesheet" href="../css/mui.min.css">
-	<!--App自定义的css-->
-	<style type="text/css">
-		html {
-			background: url(../img/bj/1357f1eed180efd4.jpg);
-			background-attachment: fixed;
-			background-size: contain;
-		}
+  <meta charset="utf-8">
+  <title>轨道交通</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!--标准mui.css-->
+  <link rel="stylesheet" href="../css/mui.min.css">
+  <!--App自定义的css-->
+  <style type="text/css">
+    html {
+      background: url(../img/bj/1357f1eed180efd4.jpg);
+      background-attachment: fixed;
+      background-size: contain;
+    }
 
-		body {
-			background: transparent !important;
-		}
+    body {
+      background: transparent !important;
+    }
 
-		.mui-content {
-			background: transparent;
-		}
+    .mui-content {
+      background: transparent;
+    }
 
-		.mui-preview-image.mui-fullscreen {
-			position: fixed;
-			z-index: 20;
-			background-color: #000;
-		}
+    .mui-preview-image.mui-fullscreen {
+      position: fixed;
+      z-index: 20;
+      background-color: #000;
+    }
 
-		.mui-preview-header,
-		.mui-preview-footer {
-			position: absolute;
-			width: 100%;
-			left: 0;
-			z-index: 10;
-		}
+    .mui-preview-header,
+    .mui-preview-footer {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      z-index: 10;
+    }
 
-		.mui-preview-header {
-			height: 44px;
-			top: 0;
-		}
+    .mui-preview-header {
+      height: 44px;
+      top: 0;
+    }
 
-		.mui-preview-footer {
-			height: 50px;
-			bottom: 0px;
-		}
+    .mui-preview-footer {
+      height: 50px;
+      bottom: 0px;
+    }
 
-		.mui-preview-header .mui-preview-indicator {
-			display: block;
-			line-height: 25px;
-			color: #fff;
-			text-align: center;
-			margin: 15px auto 4;
-			width: 70px;
-			background-color: rgba(0, 0, 0, 0.4);
-			border-radius: 12px;
-			font-size: 16px;
-		}
+    .mui-preview-header .mui-preview-indicator {
+      display: block;
+      line-height: 25px;
+      color: #fff;
+      text-align: center;
+      margin: 15px auto 4;
+      width: 70px;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      font-size: 16px;
+    }
 
-		.mui-preview-image {
-			display: none;
-			-webkit-animation-duration: 0.5s;
-			animation-duration: 0.5s;
-			-webkit-animation-fill-mode: both;
-			animation-fill-mode: both;
-		}
+    .mui-preview-image {
+      display: none;
+      -webkit-animation-duration: 0.5s;
+      animation-duration: 0.5s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
 
-		.mui-preview-image.mui-preview-in {
-			-webkit-animation-name: fadeIn;
-			animation-name: fadeIn;
-		}
+    .mui-preview-image.mui-preview-in {
+      -webkit-animation-name: fadeIn;
+      animation-name: fadeIn;
+    }
 
-		.mui-preview-image.mui-preview-out {
-			background: none;
-			-webkit-animation-name: fadeOut;
-			animation-name: fadeOut;
-		}
+    .mui-preview-image.mui-preview-out {
+      background: none;
+      -webkit-animation-name: fadeOut;
+      animation-name: fadeOut;
+    }
 
-		.mui-preview-image.mui-preview-out .mui-preview-header,
-		.mui-preview-image.mui-preview-out .mui-preview-footer {
-			display: none;
-		}
+    .mui-preview-image.mui-preview-out .mui-preview-header,
+    .mui-preview-image.mui-preview-out .mui-preview-footer {
+      display: none;
+    }
 
-		.mui-zoom-scroller {
-			position: absolute;
-			display: -webkit-box;
-			display: -webkit-flex;
-			display: flex;
-			-webkit-box-align: center;
-			-webkit-align-items: center;
-			align-items: center;
-			-webkit-box-pack: center;
-			-webkit-justify-content: center;
-			justify-content: center;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			margin: 0;
-			-webkit-backface-visibility: hidden;
-		}
+    .mui-zoom-scroller {
+      position: absolute;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      -webkit-backface-visibility: hidden;
+    }
 
-		.mui-zoom {
-			-webkit-transform-style: preserve-3d;
-			transform-style: preserve-3d;
-		}
+    .mui-zoom {
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
 
-		.mui-slider .mui-slider-group .mui-slider-item img {
-			width: auto;
-			height: auto;
-			max-width: 100%;
-			max-height: 100%;
-		}
+    .mui-slider .mui-slider-group .mui-slider-item img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
 
-		.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
-			width: 100%;
-		}
+    .mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+      width: 100%;
+    }
 
-		.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
-			display: inline-table;
-		}
+    .mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+      display: inline-table;
+    }
 
-		.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
-			display: table-cell;
-			vertical-align: middle;
-		}
+    .mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+      display: table-cell;
+      vertical-align: middle;
+    }
 
-		.mui-preview-loading {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			display: none;
-		}
+    .mui-preview-loading {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: none;
+    }
 
-		.mui-preview-loading.mui-active {
-			display: block;
-		}
+    .mui-preview-loading.mui-active {
+      display: block;
+    }
 
-		.mui-preview-loading .mui-spinner-white {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-left: -25px;
-			margin-top: -25px;
-			height: 50px;
-			width: 50px;
-		}
+    .mui-preview-loading .mui-spinner-white {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -25px;
+      margin-top: -25px;
+      height: 50px;
+      width: 50px;
+    }
 
-		.mui-preview-image img.mui-transitioning {
-			-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
-			transition: transform 0.5s ease, opacity 0.5s ease;
-		}
+    .mui-preview-image img.mui-transitioning {
+      -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
 
-		@-webkit-keyframes fadeIn {
-			0% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
 
-		@keyframes fadeIn {
-			0% {
-				opacity: 0;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
 
-		@-webkit-keyframes fadeOut {
-			0% {
-				opacity: 1;
-			}
-			100% {
-				opacity: 0;
-			}
-		}
+    @-webkit-keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
 
-		@keyframes fadeOut {
-			0% {
-				opacity: 1;
-			}
-			100% {
-				opacity: 0;
-			}
-		}
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
 
-		p img {
-			max-width: 100%;
-			height: auto;
-		}
+    p img {
+      max-width: 100%;
+      height: auto;
+    }
 
-		.mui-content-padded {
-			background: #fff;
-			padding: 15px;
-			margin-bottom: 5px;
-			background: rgba(255, 255, 255, 1);
-			/*border-radius: 5px;*/
-		}
+    .mui-content-padded {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 5px;
+      background: rgba(255, 255, 255, 1);
+      /*border-radius: 5px;*/
+    }
 
-		body {
-			font-family: "微软雅黑";
-		}
+    body {
+      font-family: "微软雅黑";
+    }
 
-		.right {
-			text-align: right;
-			font-size: 13px;
-		}
+    .right {
+      text-align: right;
+      font-size: 13px;
+    }
 
-		a {
-			text-decoration: none;
-			color: #111;
-		}
+    a {
+      text-decoration: none;
+      color: #111;
+    }
 
-		.mui-media-body {
-			line-height: 42px;
-			font-size: 18px;
-			font-weight: 900;
-		}
+    .mui-media-body {
+      line-height: 42px;
+      font-size: 18px;
+      font-weight: 900;
+    }
 
-		.mui-table-view {
-			padding: 0 5px;
-			background: transparent !important;
-		}
+    .mui-table-view {
+      padding: 0 5px;
+      background: transparent !important;
+    }
 
-		.mui-table-view:before {
-			background: none;
-		}
+    .mui-table-view:before {
+      background: none;
+    }
 
-		.mui-table-view:after {
-			background: none;
-		}
+    .mui-table-view:after {
+      background: none;
+    }
 
-		.mui-table-view-cell {
-			/*background: linear-gradient(#e36368,#d34249);*/
-			background: rgba(255, 255, 255, 1);
-			border-top-left-radius: 30px;
-			border-bottom-right-radius: 30px;
-		}
+    .mui-table-view-cell {
+      /*background: linear-gradient(#e36368,#d34249);*/
+      background: rgba(255, 255, 255, 1);
+      border-top-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
 
-		.mui-content-padded {
-			margin: 5px;
-		}
-	</style>
+    .mui-content-padded {
+      margin: 5px;
+    }
+
+  </style>
 </head>
 
 <body>
-	<!--<header class="mui-bar mui-bar-nav">
+  <!--<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">image viewer（图片预览）</h1>
 		</header>-->
-	<div class="mui-content">
-		<ul class="mui-table-view mui-table-view-chevron">
-			<li class="mui-table-view-cell mui-media">
-				<a href="javascript:;">
-					<img class="mui-media-object mui-pull-left" src="http://www.bjzdb.gov.cn/bjzdb/c100080/images/7665534607f8465eb890d727227586ed.jpg">
-					<div class="mui-media-body">
-						轨道交通
-					</div>
-				</a>
-			</li>
-		</ul>
-		<a href="gdjt/19.html">
-			<div class="mui-content-padded">
-				<h4>轨道交通19号线车站及区间已实现全面进场施工</h4>
-				<p>目前，车站主体结构完成总工程量的18.5%，整体进展顺利。19号线南起新宫站，北至牡丹园站...</p>
-				<p class="right">日期：2018-05-03</p>
-			</div>
-		</a>
-		<a href="gdjt/18.html">
-			<div class="mui-content-padded">
-				<h4>市重大项目办通报2018年一季度轨道交通建设工程安全质量情况</h4>
-				<p>2018年4月23日，市住房城乡建设委、市安监局、市公安局公交总队等相关部门通报了2018年一季度全市轨道交通建设工程监管情况...</p>
-				<p>
-					<img src="http://www.bjzdb.gov.cn/bjzdb/gdjt/2018-04/26/1051401/images/90039e53ed724793a4983ba792063e94.jpg" data-preview-src="" data-preview-group="1" />
-				</p>
-				<p class="right">日期：2018-04-26</p>
-			</div>
-		</a>
-		<a href="gdjt/17.html">
-			<div class="mui-content-padded">
-				<h4>轨道交通新机场线和19号线草桥站拆迁工作全部完成</h4>
-				<p>草桥站是轨道交通新机场线和19号线的两线换乘车站，是新机场线实现全线贯通和确保如期通车的重要节点和环节...</p>
-				<p class="right">日期：2018-05-3</p>
-			</div>
-		</a>
-		<a href="gdjt/14.html">
-			<div class="mui-content-padded">
-				<h4>市重大项目办部署轨道交通工程建设扬尘治理工作</h4>
-				<p>4月8日上午，市重大项目办总工程师杨广武召集轨道交通建设相关单位，传达落实杨斌副市长关于扬尘污染控制工作有关指示精神...</p>
-				<p class="right">日期：2018-04-10</p>
-			</div>
-		</a>
-		<a href="gdjt/13.html">
-			<div class="mui-content-padded">
-				<h4>市重大项目办全国“两会”期间开展安全生产工作专项抽查</h4>
-				<p>3月7日，市重大项目办联合市住建委、市安监局，采取“四不两直”方式，对全国“两会”住地周边和重点敏感区域轨道交通建设项目开展专项抽查...</p>
-				<p><img src="http://www.bjzdb.gov.cn/bjzdb/gdjt/2018-03/09/1051083/images/63df6cbc673443dabf032e4da55d5597.png" /></p>
-				<p class="right">日期：2018-03-09</p>
-			</div>
-		</a>
-		<a href="gdjt/12.html">
-			<div class="mui-content-padded">
-				<h4>8号线珠市口站至瀛海站实现洞通</h4>
-				<p>该段包含8号线三期珠市口站至五福堂站区段线路（13公里，11座车站）和8号线四期，共计16.4公里，13座车站...</p>
-				<p class="right">日期：2018-03-09</p>
-			</div>
-		</a>
-		<a href="gdjt/11.html">
-			<div class="mui-content-padded">
-				<h4>市重大项目办部署全国“两会”期间轨道交通建设安保工作</h4>
-				<p>2月28日，市重大项目办会同市公安局公交总队轨道支队，对全国“两会”期间轨道交通建设安保工作进行部署...</p>
-				<p class="right">日期：2018-03-02</p>
-			</div>
-		</a>
-		<a href="gdjt/10.html">
-			<div class="mui-content-padded">
-				<h4>市重大项目办与大兴区政府共同研究 加快推进轨道交通新机场线建设</h4>
-				<p>为加快推进轨道交通新机场线建设，确保全线关键节点尽早实现进场施工...</p>
-				<p class="right">日期：2018-02-13</p>
-			</div>
-		</a>
-		<a href="gdjt/9.html">
-			<div class="mui-content-padded">
-				<h4>市重大项目办与朝阳区政府共同推进轨道交通建设工作</h4>
-				<p>2018年2月1日下午，市重大项目办门扬副主任和朝阳区政府李国红副区长共同主持召开会议，研究朝阳区轨道交通建设有关工作...</p>
-				<p class="right">日期：2018-02-13</p>
-			</div>
-		</a>
-		<a href="gdjt/6.html">
-			<div class="mui-content-padded">
-				<h4>16号线实现全面进场施工</h4>
-				<p>在丰台区政府的积极推进和大力支持下， 2017年12月18日，地铁16号线丰台站实现进场施工...</p>
-				<p>
-					<img src="http://www.bjzdb.gov.cn/gdjt/W020171222556517958502.jpg" alt="" />
-				</p>
-				<p class="right">日期：2017-12-22</p>
-			</div>
-		</a>
-		<a href="gdjt/7.html">
-			<div class="mui-content-padded">
-				<h4>轨道交通建设11月份工程月报</h4>
-				<p>2017年轨道交通在建线路20条（段），计划新开工线路2条（段），共计22条（段）线路...</p>
-				<p class="right">日期：2017-12-21</p>
-			</div>
-		</a>
-		<a href="gdjt/8.html">
-			<div class="mui-content-padded">
-				<h4>17号线勇士营站实现围挡</h4>
-				<p>17号线勇士营站位于红军营南路与北苑东路路口北侧，是全线的重要节点工程...</p>
-				<p>
-					<img src="http://www.bjzdb.gov.cn/gdjt/W020171221396487867523.jpg" data-preview-src="" data-preview-group="1" />
-				</p>
-				<p class="right">日期：2017-12-21</p>
-			</div>
-		</a>
-		<a href="gdjt/5.html">
-			<div class="mui-content-padded">
-				<h4>S1线、燕房线、西郊线三条年内开通线路</h4>
-				<p>11月27日，S1线开始跑图试运行，这标志着计划年内开通的S1线、燕房线、西郊线三条线路已全部进入跑图试运行阶段...</p>
-				<p class="right">日期：2017-12-05</p>
-			</div>
-		</a>
-		<a href="gdjt/1.html">
-			<div class="mui-content-padded">
-				<h4>本市召开轨道交通建设工程第三季度安全质量工作通报会</h4>
-				<p>
-					<img src="http://www.bjzdb.gov.cn/gdjt/W020171109436249048654.png" data-preview-src="" data-preview-group="1" />
-				</p>
-				<p>第三季度全市轨道交通建设工程安全生产形势整体平稳，但是相比前两个季度...</p>
-				<p class="right">日期：2017-11-09</p>
-			</div>
-		</a>
-		<a href="gdjt/2.html">
-			<div class="mui-content-padded">
-				<h4>本市加大推进轨道交通新机场线征地拆迁工作力度</h4>
-				<p>轨道交通新机场线一期工程全长41.4km，其中，新机场线一期大兴区段线路长度31.2km...</p>
-				<p class="right">日期：2017-11-09</p>
-			</div>
-		</a>
-		<a href="gdjt/3.html">
-			<div class="mui-content-padded">
-				<h4>2017年9月份重大项目进展月报--轨道交通方面</h4>
-				<p>2017年轨道交通在建线路20条（段），计划新开工线路2条（段），共计22条（段）线路；计划通车3条（段）线路...</p>
-				<p class="right">日期：2017-10-30</p>
-			</div>
-		</a>
-		<a href="gdjt/4.html">
-			<div class="mui-content-padded">
-				<h4>新机场线“京航1号”盾构机始发</h4>
-				<p>中工网消息，17日，国内单线直径最大的盾构地铁施工项目——北京轨道交通新机场线项目“京航1号”盾构机...</p>
-				<p class="right">日期：2017-10-20</p>
-			</div>
-		</a>
-	</div>
+  <div class="mui-content">
+    <ul class="mui-table-view mui-table-view-chevron">
+      <li class="mui-table-view-cell mui-media">
+        <a href="javascript:;">
+          <img class="mui-media-object mui-pull-left" src="http://www.bjzdb.gov.cn/bjzdb/c100080/images/7665534607f8465eb890d727227586ed.jpg">
+          <div class="mui-media-body">
+            轨道交通
+          </div>
+        </a>
+      </li>
+    </ul>
+    <a href="gdjt/20.html">
+      <div class="mui-content-padded">
+        <h4>市重大项目办启动2018年轨道交通建设防汛工作</h4>
+        <p>5月11日下午，北京市轨道交通建设工程防汛工作第一次调度大会暨安全生产工作会在北京市轨道交通建设管理有限公司召开，标志着2018年轨道交通建设工程防汛工作正式启动...</p>
+
+        <p class="right">日期：2018-05-16</p>
+
+      </div>
+    </a>
+
+    <a href="gdjt/19.html">
+      <div class="mui-content-padded">
+        <h4>轨道交通19号线车站及区间已实现全面进场施工</h4>
+        <p>目前，车站主体结构完成总工程量的18.5%，整体进展顺利。19号线南起新宫站，北至牡丹园站...</p>
+        <p class="right">日期：2018-05-03</p>
+      </div>
+    </a>
+    <a href="gdjt/18.html">
+      <div class="mui-content-padded">
+        <h4>市重大项目办通报2018年一季度轨道交通建设工程安全质量情况</h4>
+        <p>2018年4月23日，市住房城乡建设委、市安监局、市公安局公交总队等相关部门通报了2018年一季度全市轨道交通建设工程监管情况...</p>
+        <p>
+          <img src="http://www.bjzdb.gov.cn/bjzdb/gdjt/2018-04/26/1051401/images/90039e53ed724793a4983ba792063e94.jpg" data-preview-src=""
+            data-preview-group="1" />
+        </p>
+        <p class="right">日期：2018-04-26</p>
+      </div>
+    </a>
+    <a href="gdjt/17.html">
+      <div class="mui-content-padded">
+        <h4>轨道交通新机场线和19号线草桥站拆迁工作全部完成</h4>
+        <p>草桥站是轨道交通新机场线和19号线的两线换乘车站，是新机场线实现全线贯通和确保如期通车的重要节点和环节...</p>
+        <p class="right">日期：2018-05-3</p>
+      </div>
+    </a>
+    <a href="gdjt/14.html">
+      <div class="mui-content-padded">
+        <h4>市重大项目办部署轨道交通工程建设扬尘治理工作</h4>
+        <p>4月8日上午，市重大项目办总工程师杨广武召集轨道交通建设相关单位，传达落实杨斌副市长关于扬尘污染控制工作有关指示精神...</p>
+        <p class="right">日期：2018-04-10</p>
+      </div>
+    </a>
+    <a href="gdjt/13.html">
+      <div class="mui-content-padded">
+        <h4>市重大项目办全国“两会”期间开展安全生产工作专项抽查</h4>
+        <p>3月7日，市重大项目办联合市住建委、市安监局，采取“四不两直”方式，对全国“两会”住地周边和重点敏感区域轨道交通建设项目开展专项抽查...</p>
+        <p>
+          <img src="http://www.bjzdb.gov.cn/bjzdb/gdjt/2018-03/09/1051083/images/63df6cbc673443dabf032e4da55d5597.png" />
+        </p>
+        <p class="right">日期：2018-03-09</p>
+      </div>
+    </a>
+    <a href="gdjt/12.html">
+      <div class="mui-content-padded">
+        <h4>8号线珠市口站至瀛海站实现洞通</h4>
+        <p>该段包含8号线三期珠市口站至五福堂站区段线路（13公里，11座车站）和8号线四期，共计16.4公里，13座车站...</p>
+        <p class="right">日期：2018-03-09</p>
+      </div>
+    </a>
+    <a href="gdjt/11.html">
+      <div class="mui-content-padded">
+        <h4>市重大项目办部署全国“两会”期间轨道交通建设安保工作</h4>
+        <p>2月28日，市重大项目办会同市公安局公交总队轨道支队，对全国“两会”期间轨道交通建设安保工作进行部署...</p>
+        <p class="right">日期：2018-03-02</p>
+      </div>
+    </a>
+    <a href="gdjt/10.html">
+      <div class="mui-content-padded">
+        <h4>市重大项目办与大兴区政府共同研究 加快推进轨道交通新机场线建设</h4>
+        <p>为加快推进轨道交通新机场线建设，确保全线关键节点尽早实现进场施工...</p>
+        <p class="right">日期：2018-02-13</p>
+      </div>
+    </a>
+    <a href="gdjt/9.html">
+      <div class="mui-content-padded">
+        <h4>市重大项目办与朝阳区政府共同推进轨道交通建设工作</h4>
+        <p>2018年2月1日下午，市重大项目办门扬副主任和朝阳区政府李国红副区长共同主持召开会议，研究朝阳区轨道交通建设有关工作...</p>
+        <p class="right">日期：2018-02-13</p>
+      </div>
+    </a>
+    <a href="gdjt/6.html">
+      <div class="mui-content-padded">
+        <h4>16号线实现全面进场施工</h4>
+        <p>在丰台区政府的积极推进和大力支持下， 2017年12月18日，地铁16号线丰台站实现进场施工...</p>
+        <p>
+          <img src="http://www.bjzdb.gov.cn/gdjt/W020171222556517958502.jpg" alt="" />
+        </p>
+        <p class="right">日期：2017-12-22</p>
+      </div>
+    </a>
+    <a href="gdjt/7.html">
+      <div class="mui-content-padded">
+        <h4>轨道交通建设11月份工程月报</h4>
+        <p>2017年轨道交通在建线路20条（段），计划新开工线路2条（段），共计22条（段）线路...</p>
+        <p class="right">日期：2017-12-21</p>
+      </div>
+    </a>
+    <a href="gdjt/8.html">
+      <div class="mui-content-padded">
+        <h4>17号线勇士营站实现围挡</h4>
+        <p>17号线勇士营站位于红军营南路与北苑东路路口北侧，是全线的重要节点工程...</p>
+        <p>
+          <img src="http://www.bjzdb.gov.cn/gdjt/W020171221396487867523.jpg" data-preview-src="" data-preview-group="1" />
+        </p>
+        <p class="right">日期：2017-12-21</p>
+      </div>
+    </a>
+    <a href="gdjt/5.html">
+      <div class="mui-content-padded">
+        <h4>S1线、燕房线、西郊线三条年内开通线路</h4>
+        <p>11月27日，S1线开始跑图试运行，这标志着计划年内开通的S1线、燕房线、西郊线三条线路已全部进入跑图试运行阶段...</p>
+        <p class="right">日期：2017-12-05</p>
+      </div>
+    </a>
+    <a href="gdjt/1.html">
+      <div class="mui-content-padded">
+        <h4>本市召开轨道交通建设工程第三季度安全质量工作通报会</h4>
+        <p>
+          <img src="http://www.bjzdb.gov.cn/gdjt/W020171109436249048654.png" data-preview-src="" data-preview-group="1" />
+        </p>
+        <p>第三季度全市轨道交通建设工程安全生产形势整体平稳，但是相比前两个季度...</p>
+        <p class="right">日期：2017-11-09</p>
+      </div>
+    </a>
+    <a href="gdjt/2.html">
+      <div class="mui-content-padded">
+        <h4>本市加大推进轨道交通新机场线征地拆迁工作力度</h4>
+        <p>轨道交通新机场线一期工程全长41.4km，其中，新机场线一期大兴区段线路长度31.2km...</p>
+        <p class="right">日期：2017-11-09</p>
+      </div>
+    </a>
+    <a href="gdjt/3.html">
+      <div class="mui-content-padded">
+        <h4>2017年9月份重大项目进展月报--轨道交通方面</h4>
+        <p>2017年轨道交通在建线路20条（段），计划新开工线路2条（段），共计22条（段）线路；计划通车3条（段）线路...</p>
+        <p class="right">日期：2017-10-30</p>
+      </div>
+    </a>
+    <a href="gdjt/4.html">
+      <div class="mui-content-padded">
+        <h4>新机场线“京航1号”盾构机始发</h4>
+        <p>中工网消息，17日，国内单线直径最大的盾构地铁施工项目——北京轨道交通新机场线项目“京航1号”盾构机...</p>
+        <p class="right">日期：2017-10-20</p>
+      </div>
+    </a>
+  </div>
 </body>
 <script src="../js/mui.min.js"></script>
 <script src="../js/mui.zoom.js"></script>
 <script src="../js/mui.previewimage.js"></script>
 <script>
-	//		mui.previewImage();
+  //		mui.previewImage();
+
 </script>
 
 </html>
