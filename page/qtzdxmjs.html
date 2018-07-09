@@ -1,274 +1,318 @@
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<title>其他项目</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<!--标准mui.css-->
-		<link rel="stylesheet" href="../css/mui.min.css">
-		<!--App自定义的css-->
-		<style type="text/css">
-			html{
-				background: url(../img/bj/1357f1eed180efd4.jpg);
-				background-attachment: fixed;
-				background-size: contain;
-			}
-			body{
-				background: transparent !important;
-			}
-			.mui-content{
-				background: transparent;
-			}
-			.mui-preview-image.mui-fullscreen {
-				position: fixed;
-				z-index: 20;
-				background-color: #000;
-			}
-			.mui-preview-header,
-			.mui-preview-footer {
-				position: absolute;
-				width: 100%;
-				left: 0;
-				z-index: 10;
-			}
-			.mui-preview-header {
-				height: 44px;
-				top: 0;
-			}
-			.mui-preview-footer {
-				height: 50px;
-				bottom: 0px;
-			}
-			.mui-preview-header .mui-preview-indicator {
-				display: block;
-				line-height: 25px;
-				color: #fff;
-				text-align: center;
-				margin: 15px auto 4;
-				width: 70px;
-				background-color: rgba(0, 0, 0, 0.4);
-				border-radius: 12px;
-				font-size: 16px;
-			}
-			.mui-preview-image {
-				display: none;
-				-webkit-animation-duration: 0.5s;
-				animation-duration: 0.5s;
-				-webkit-animation-fill-mode: both;
-				animation-fill-mode: both;
-			}
-			.mui-preview-image.mui-preview-in {
-				-webkit-animation-name: fadeIn;
-				animation-name: fadeIn;
-			}
-			.mui-preview-image.mui-preview-out {
-				background: none;
-				-webkit-animation-name: fadeOut;
-				animation-name: fadeOut;
-			}
-			.mui-preview-image.mui-preview-out .mui-preview-header,
-			.mui-preview-image.mui-preview-out .mui-preview-footer {
-				display: none;
-			}
-			.mui-zoom-scroller {
-				position: absolute;
-				display: -webkit-box;
-				display: -webkit-flex;
-				display: flex;
-				-webkit-box-align: center;
-				-webkit-align-items: center;
-				align-items: center;
-				-webkit-box-pack: center;
-				-webkit-justify-content: center;
-				justify-content: center;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				top: 0;
-				width: 100%;
-				height: 100%;
-				margin: 0;
-				-webkit-backface-visibility: hidden;
-			}
-			.mui-zoom {
-				-webkit-transform-style: preserve-3d;
-				transform-style: preserve-3d;
-			}
-			.mui-slider .mui-slider-group .mui-slider-item img {
-				width: auto;
-				height: auto;
-				max-width: 100%;
-				max-height: 100%;
-			}
-			.mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
-				width: 100%;
-			}
-			.mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
-				display: inline-table;
-			}
-			.mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
-				display: table-cell;
-				vertical-align: middle;
-			}
-			.mui-preview-loading {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
-				display: none;
-			}
-			.mui-preview-loading.mui-active {
-				display: block;
-			}
-			.mui-preview-loading .mui-spinner-white {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				margin-left: -25px;
-				margin-top: -25px;
-				height: 50px;
-				width: 50px;
-			}
-			.mui-preview-image img.mui-transitioning {
-				-webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
-				transition: transform 0.5s ease, opacity 0.5s ease;
-			}
-			@-webkit-keyframes fadeIn {
-				0% {
-					opacity: 0;
-				}
-				100% {
-					opacity: 1;
-				}
-			}
-			@keyframes fadeIn {
-				0% {
-					opacity: 0;
-				}
-				100% {
-					opacity: 1;
-				}
-			}
-			@-webkit-keyframes fadeOut {
-				0% {
-					opacity: 1;
-				}
-				100% {
-					opacity: 0;
-				}
-			}
-			@keyframes fadeOut {
-				0% {
-					opacity: 1;
-				}
-				100% {
-					opacity: 0;
-				}
-			}
-			p img {
-				max-width: 100%;
-				height: auto;
-			}
-			.mui-content-padded{
-				background: #fff;
-				padding:15px;
-				margin-bottom: 5px;
-				background: rgba(255,255,255,1);
-				/*border-radius: 5px;*/
-			}
-			body{
-				font-family: "微软雅黑";
-			}
-			.right{
-				text-align: right;
-				font-size: 13px;
-			}
-			a{
-				text-decoration: none;
-				color: #111;
-			}
-			.mui-media-body{
-				line-height: 42px;
-				font-size: 18px;
-				font-weight: 900;
-			}
-			.mui-table-view{
-				padding:0 5px;
-				background: transparent !important;
-			}
-			.mui-table-view:before{
-				background: none;
-			}
-			.mui-table-view:after{
-				background: none;
-			}
-			.mui-table-view-cell{
-				/*background: linear-gradient(#e36368,#d34249);*/
-				background: rgba(255,255,255,1);
-				border-top-left-radius: 30px;
-				border-bottom-right-radius: 30px;
-			}
-			.mui-content-padded{
-				margin: 5px;
-			}
-		</style>
-	</head>
+<head>
+  <meta charset="utf-8">
+  <title>其他项目</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!--标准mui.css-->
+  <link rel="stylesheet" href="../css/mui.min.css">
+  <!--App自定义的css-->
+  <style type="text/css">
+    html {
+      background: url(../img/bj/1357f1eed180efd4.jpg);
+      background-attachment: fixed;
+      background-size: contain;
+    }
 
-	<body>
-		<!--<header class="mui-bar mui-bar-nav">
+    body {
+      background: transparent !important;
+    }
+
+    .mui-content {
+      background: transparent;
+    }
+
+    .mui-preview-image.mui-fullscreen {
+      position: fixed;
+      z-index: 20;
+      background-color: #000;
+    }
+
+    .mui-preview-header,
+    .mui-preview-footer {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      z-index: 10;
+    }
+
+    .mui-preview-header {
+      height: 44px;
+      top: 0;
+    }
+
+    .mui-preview-footer {
+      height: 50px;
+      bottom: 0px;
+    }
+
+    .mui-preview-header .mui-preview-indicator {
+      display: block;
+      line-height: 25px;
+      color: #fff;
+      text-align: center;
+      margin: 15px auto 4;
+      width: 70px;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      font-size: 16px;
+    }
+
+    .mui-preview-image {
+      display: none;
+      -webkit-animation-duration: 0.5s;
+      animation-duration: 0.5s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    .mui-preview-image.mui-preview-in {
+      -webkit-animation-name: fadeIn;
+      animation-name: fadeIn;
+    }
+
+    .mui-preview-image.mui-preview-out {
+      background: none;
+      -webkit-animation-name: fadeOut;
+      animation-name: fadeOut;
+    }
+
+    .mui-preview-image.mui-preview-out .mui-preview-header,
+    .mui-preview-image.mui-preview-out .mui-preview-footer {
+      display: none;
+    }
+
+    .mui-zoom-scroller {
+      position: absolute;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .mui-zoom {
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+
+    .mui-slider .mui-slider-group .mui-slider-item img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+      width: 100%;
+    }
+
+    .mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+      display: inline-table;
+    }
+
+    .mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .mui-preview-loading {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    .mui-preview-loading.mui-active {
+      display: block;
+    }
+
+    .mui-preview-loading .mui-spinner-white {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -25px;
+      margin-top: -25px;
+      height: 50px;
+      width: 50px;
+    }
+
+    .mui-preview-image img.mui-transitioning {
+      -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    p img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .mui-content-padded {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 5px;
+      background: rgba(255, 255, 255, 1);
+      /*border-radius: 5px;*/
+    }
+
+    body {
+      font-family: "微软雅黑";
+    }
+
+    .right {
+      text-align: right;
+      font-size: 13px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #111;
+    }
+
+    .mui-media-body {
+      line-height: 42px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .mui-table-view {
+      padding: 0 5px;
+      background: transparent !important;
+    }
+
+    .mui-table-view:before {
+      background: none;
+    }
+
+    .mui-table-view:after {
+      background: none;
+    }
+
+    .mui-table-view-cell {
+      /*background: linear-gradient(#e36368,#d34249);*/
+      background: rgba(255, 255, 255, 1);
+      border-top-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+    }
+
+    .mui-content-padded {
+      margin: 5px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!--<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">image viewer（图片预览）</h1>
 		</header>-->
-		<div class="mui-content">
-			<ul class="mui-table-view mui-table-view-chevron">
-				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
-						<img class="mui-media-object mui-pull-left" src="../img/1510221355.jpg">
-						<div class="mui-media-body">
-							其他项目
-						</div>
-					</a>
-				</li>
-			</ul>
-			<a href="qtzdxm/10.html">
-				<div class="mui-content-padded">
-						<h4>市重大项目办协调解决北京地铁新机场线一期工程穿越南四环马家楼桥区东北、东南象限匝道桥技术问题</h4>
-						<p>该工程位于北京南部三环以外区域，是连接中心城区与新机场的轨道交通线路，计划于2019年底通车...</p>
-						<p class="right">日期：2017-12-22</p>
-				</div>
-			</a>
-			<a href="qtzdxm/6.html">
-				<div class="mui-content-padded">
-						<h4>本市重点民生工程涿州-房山供热主干线工程管线全部贯通</h4>
-						<p>市重大项目办将继续协调各参建单位，加快完成涿房线土建收尾、管道保温等剩余工程...</p>
-						<p class="right">日期：2017-11-16</p>
-				</div>
-			</a>
-			<a href="qtzdxm/7.html">
-				<div class="mui-content-padded">
-						<h4>陕京四线（北京段）具备投产条件</h4>
-						<p>10月29日,陕京四线（北京段）干线工程建成，11月2日支线（顺义高丽营—昌平西沙屯分输站）完工...</p>
-						<p class="right">日期：2017-11-16</p>
-				</div>
-			</a>
-			<a href="qtzdxm/8.html">
-				<div class="mui-content-padded">
-						<h4>吴店、鸿顺园供热厂清洁能源改造完成 已实现供暖</h4>
-						<p>为落实《北京市2016-2017年加快推动南部四区无煤化工作实施方案》，市重大项目办加大协调力度，积极推进吴店、鸿顺园供热厂改造工程...</p>
-						<p class="right">日期：2017-11-16</p>
-				</div>
-			</a>
-			<a href="qtzdxm/9.html">
-				<div class="mui-content-padded">
-						<h4>华能北京热电厂三期扩建工程完工</h4>
-						<p>华能北京热电厂三期扩建工程完工。标志着“北京四大热电中心”建设任务全部完成...</p>
-						<p class="right">日期：2017-11-16</p>
-				</div>
-			</a>
-			<!--<a href="qtzdxm/1.html">
+  <div class="mui-content">
+    <ul class="mui-table-view mui-table-view-chevron">
+      <li class="mui-table-view-cell mui-media">
+        <a href="javascript:;">
+          <img class="mui-media-object mui-pull-left" src="../img/1510221355.jpg">
+          <div class="mui-media-body">
+            其他项目
+          </div>
+        </a>
+      </li>
+    </ul>
+    <a href="qtzdxm/11.html">
+      <div class="mui-content-padded">
+        <h4>五棵松冰上运动中心完成土方施工</h4>
+        <p>五棵松冰上运动中心工程占地面积1.7万平方米，总建筑面积3.8万平方米...</p>
+        <p class="right">日期：2018-07-06</p>
+      </div>
+    </a>
+    <a href="qtzdxm/10.html">
+      <div class="mui-content-padded">
+        <h4>市重大项目办协调解决北京地铁新机场线一期工程穿越南四环马家楼桥区东北、东南象限匝道桥技术问题</h4>
+        <p>该工程位于北京南部三环以外区域，是连接中心城区与新机场的轨道交通线路，计划于2019年底通车...</p>
+        <p class="right">日期：2017-12-22</p>
+      </div>
+    </a>
+    <a href="qtzdxm/6.html">
+      <div class="mui-content-padded">
+        <h4>本市重点民生工程涿州-房山供热主干线工程管线全部贯通</h4>
+        <p>市重大项目办将继续协调各参建单位，加快完成涿房线土建收尾、管道保温等剩余工程...</p>
+        <p class="right">日期：2017-11-16</p>
+      </div>
+    </a>
+    <a href="qtzdxm/7.html">
+      <div class="mui-content-padded">
+        <h4>陕京四线（北京段）具备投产条件</h4>
+        <p>10月29日,陕京四线（北京段）干线工程建成，11月2日支线（顺义高丽营—昌平西沙屯分输站）完工...</p>
+        <p class="right">日期：2017-11-16</p>
+      </div>
+    </a>
+    <a href="qtzdxm/8.html">
+      <div class="mui-content-padded">
+        <h4>吴店、鸿顺园供热厂清洁能源改造完成 已实现供暖</h4>
+        <p>为落实《北京市2016-2017年加快推动南部四区无煤化工作实施方案》，市重大项目办加大协调力度，积极推进吴店、鸿顺园供热厂改造工程...</p>
+        <p class="right">日期：2017-11-16</p>
+      </div>
+    </a>
+    <a href="qtzdxm/9.html">
+      <div class="mui-content-padded">
+        <h4>华能北京热电厂三期扩建工程完工</h4>
+        <p>华能北京热电厂三期扩建工程完工。标志着“北京四大热电中心”建设任务全部完成...</p>
+        <p class="right">日期：2017-11-16</p>
+      </div>
+    </a>
+    <!--<a href="qtzdxm/1.html">
 				<div class="mui-content-padded">
 						<h4>新首钢高端产业综合服务区项目基本情况</h4>
 						<p>新首钢高端产业综合服务区范围原则指首钢主厂区及周边一同批复规划的区域（规划建筑面积共计1060万平方米，占地计8.63平方公里，以下简称首钢主厂区地区）和中关村科技园区南区189公顷（包含特钢厂区和北辛村地区），两者合计10.52平方公里...</p>
@@ -296,13 +340,14 @@
 					<p class="right">日期：2013-04-01</p>
 				</div>
 			</a>-->
-		</div>
-	</body>
-	<script src="../js/mui.min.js"></script>
-	<script src="../js/mui.zoom.js"></script>
-	<script src="../js/mui.previewimage.js"></script>
-	<script>
-//		mui.previewImage();
-	</script>
+  </div>
+</body>
+<script src="../js/mui.min.js"></script>
+<script src="../js/mui.zoom.js"></script>
+<script src="../js/mui.previewimage.js"></script>
+<script>
+  //		mui.previewImage();
+
+</script>
 
 </html>
